@@ -1,0 +1,128 @@
+<%- include('partials/header', { title: 'Dashboard' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">
+                <i class="bi bi-speedometer2 text-primary me-2"></i>Dashboard
+            </h1>
+            <p class="text-muted">Welcome back, <%= userName %>!</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-clipboard-check text-primary" style="font-size: 2.5rem;"></i>
+                    <h3 class="mt-3"><%= tests.length %></h3>
+                    <p class="text-muted mb-0">Total Tests</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-check-circle text-success" style="font-size: 2.5rem;"></i>
+                    <h3 class="mt-3"><%= tests.filter(t => t.subjectiveCompleted).length %></h3>
+                    <p class="text-muted mb-0">Completed</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-hourglass-split text-warning" style="font-size: 2.5rem;"></i>
+                    <h3 class="mt-3"><%= tests.filter(t => t.mcqCompleted && !t.subjectiveCompleted).length %></h3>
+                    <p class="text-muted mb-0">In Progress</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-heart-pulse text-danger" style="font-size: 2.5rem;"></i>
+                    <h3 class="mt-3"><%= new Set(tests.map(t => t.testType)).size %></h3>
+                    <p class="text-muted mb-0">Test Types</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold">Recent Tests</h5>
+                        <a href="/test/select" class="btn btn-primary">
+                            <i class="bi bi-plus-circle me-2"></i>New Test
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <% if (tests.length === 0) { %>
+                        <div class="text-center py-5">
+                            <i class="bi bi-clipboard-x text-muted" style="font-size: 4rem;"></i>
+                            <p class="text-muted mt-3">No tests yet. Start your first assessment!</p>
+                            <a href="/test/select" class="btn btn-primary mt-3">
+                                <i class="bi bi-clipboard-check me-2"></i>Take Your First Test
+                            </a>
+                        </div>
+                    <% } else { %>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Test Type</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% tests.forEach(test => { %>
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-primary"><%= test.testType.charAt(0).toUpperCase() + test.testType.slice(1) %></span>
+                                            </td>
+                                            <td>
+                                                <% if (test.subjectiveCompleted) { %>
+                                                    <span class="badge bg-success">Completed</span>
+                                                <% } else if (test.mcqCompleted) { %>
+                                                    <span class="badge bg-warning">In Progress</span>
+                                                <% } else { %>
+                                                    <span class="badge bg-secondary">Not Started</span>
+                                                <% } %>
+                                            </td>
+                                            <td><%= new Date(test.createdAt).toLocaleDateString() %></td>
+                                            <td>
+                                                <% if (test.subjectiveCompleted) { %>
+                                                    <a href="/test/results/<%= test._id %>" class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-eye me-1"></i>View Results
+                                                    </a>
+                                                <% } else if (test.mcqCompleted) { %>
+                                                    <a href="/test/subjective/<%= test._id %>" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-play-circle me-1"></i>Continue
+                                                    </a>
+                                                <% } else { %>
+                                                    <a href="/test/mcq/<%= test.testType %>" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-play-circle me-1"></i>Start
+                                                    </a>
+                                                <% } %>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+

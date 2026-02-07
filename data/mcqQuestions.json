@@ -1,0 +1,371 @@
+{
+  "depression": [
+    {
+      "id": 1,
+      "question": "How often do you feel sad or down?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How is your appetite?",
+      "options": ["Normal", "Slightly reduced", "Significantly reduced", "No appetite"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you feel tired or lack energy?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel hopeless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you have difficulty concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you lose interest in activities you used to enjoy?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you feel worthless or guilty?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you have thoughts of self-harm?",
+      "options": ["Never", "Rarely", "Sometimes", "Often"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you feel restless or agitated?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How is your ability to make decisions?",
+      "options": ["Excellent", "Good", "Fair", "Poor"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you feel anxious or worried?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How would you rate your overall mood?",
+      "options": ["Very good", "Good", "Fair", "Poor"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you feel isolated or disconnected from others?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How often do you feel like crying?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "anxiety": [
+    {
+      "id": 1,
+      "question": "How often do you feel nervous or anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you experience panic attacks?",
+      "options": ["Never", "Rarely", "Sometimes", "Often"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How often do you worry excessively?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you have trouble controlling your worries?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel restless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you experience physical symptoms like rapid heartbeat?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you avoid situations that make you anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you have trouble sleeping due to anxiety?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you feel tense or on edge?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you experience muscle tension?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How often do you feel irritable?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you have difficulty concentrating due to anxiety?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How often do you feel like something bad will happen?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you experience shortness of breath or dizziness?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does anxiety interfere with your daily life?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "stress": [
+    {
+      "id": 1,
+      "question": "How often do you feel overwhelmed?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have trouble relaxing?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How often do you feel irritable or angry?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you experience headaches or muscle pain?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel tired or exhausted?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you worry about work or responsibilities?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you feel like you have too much to do?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you feel anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you have difficulty making decisions?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How often do you feel restless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you experience changes in appetite?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How often do you feel like you're losing control?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you have trouble concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does stress affect your daily activities?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "ptsd": [
+    {
+      "id": 1,
+      "question": "Have you experienced a traumatic event?",
+      "options": ["No", "Yes, but not bothered", "Yes, somewhat bothered", "Yes, very bothered"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have recurring memories of the traumatic event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "Do you have nightmares about the event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you avoid reminders of the traumatic event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "Do you feel emotionally numb?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you feel detached from others?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "Do you experience flashbacks?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Are you easily startled?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you feel irritable or have angry outbursts?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "Do you have difficulty concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you feel hypervigilant?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "Do you have negative thoughts about yourself or the world?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you feel guilt or shame about the event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does this affect your daily life?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ]
+}
+

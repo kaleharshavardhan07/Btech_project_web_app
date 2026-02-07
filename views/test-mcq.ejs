@@ -1,0 +1,150 @@
+<%- include('partials/header', { title: 'MCQ Test' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-primary text-white py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="bi bi-clipboard-check me-2"></i>MCQ Assessment
+                        </h5>
+                        <span class="badge bg-light text-primary" id="progressBadge">Question 1/<%= questionCount %></span>
+                    </div>
+                    <div class="progress mt-3" style="height: 8px;">
+                        <div class="progress-bar bg-light" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <form id="mcqForm">
+                        <input type="hidden" name="testType" value="<%= testType %>">
+                        
+                        <div id="questionContainer">
+                            <!-- Questions will be dynamically loaded here -->
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-outline-secondary" id="prevBtn" style="display: none;">
+                                <i class="bi bi-arrow-left me-2"></i>Previous
+                            </button>
+                            <button type="button" class="btn btn-primary ms-auto" id="nextBtn">
+                                Next<i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                            <button type="submit" class="btn btn-success ms-auto" id="submitBtn" style="display: none;">
+                                <i class="bi bi-check-circle me-2"></i>Submit Test
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const questions = <%- JSON.stringify(questions) %>;
+    const questionCount = <%= questionCount %>;
+    let currentQuestion = 0;
+    const answers = new Array(questionCount).fill(null);
+
+    function renderQuestion() {
+        const question = questions[currentQuestion];
+        const container = document.getElementById('questionContainer');
+        
+        container.innerHTML = `
+            <div class="question-card">
+                <h4 class="mb-4 fw-bold">${question.question}</h4>
+                <div class="options-list">
+                    ${question.options.map((option, index) => `
+                        <div class="form-check option-item mb-3">
+                            <input class="form-check-input" type="radio" name="answer" id="option${index}" 
+                                   value="${option}" ${answers[currentQuestion] === option ? 'checked' : ''}>
+                            <label class="form-check-label w-100 p-3" for="option${index}">
+                                ${option}
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        // Update progress
+        const progress = ((currentQuestion + 1) / questionCount) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('progressBadge').textContent = `Question ${currentQuestion + 1}/${questionCount}`;
+
+        // Update buttons
+        document.getElementById('prevBtn').style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+        document.getElementById('nextBtn').style.display = currentQuestion === questionCount - 1 ? 'none' : 'inline-block';
+        document.getElementById('submitBtn').style.display = currentQuestion === questionCount - 1 ? 'inline-block' : 'none';
+
+        // Add event listeners
+        document.querySelectorAll('input[name="answer"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                answers[currentQuestion] = e.target.value;
+            });
+        });
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        if (answers[currentQuestion]) {
+            currentQuestion++;
+            renderQuestion();
+        } else {
+            alert('Please select an answer before proceeding.');
+        }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        currentQuestion--;
+        renderQuestion();
+    });
+
+    document.getElementById('mcqForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (answers.some(a => a === null)) {
+            alert('Please answer all questions before submitting.');
+            return;
+        }
+
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Submitting...';
+
+        try {
+            const response = await fetch('/test/mcq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    testType: '<%= testType %>',
+                    answers: answers
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.success) {
+                window.location.href = `/test/subjective/${data.testId}`;
+            } else {
+                alert('Error submitting test. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Submit Test';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error submitting test. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Submit Test';
+        }
+    });
+
+    // Initialize
+    renderQuestion();
+</script>
+
+<%- include('partials/footer') %>
+

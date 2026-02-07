@@ -1,0 +1,335 @@
+/* Custom Styles for Mental Health Assessment Platform */
+
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #7c3aed;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+    color: white;
+}
+
+.hero-image {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+.test-type-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.test-type-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+}
+
+.test-icon {
+    transition: transform 0.3s ease;
+}
+
+.test-type-card:hover .test-icon {
+    transform: scale(1.1);
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3f91 100%);
+}
+
+/* Form Elements */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+/* MCQ Test */
+.question-card {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.option-item {
+    transition: all 0.2s ease;
+}
+
+.option-item:hover {
+    background: #e9ecef;
+    border-radius: 8px;
+}
+
+.option-item .form-check-label {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.option-item input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+}
+
+/* Video Recording */
+.video-container {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-container video {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.recording-indicator {
+    z-index: 10;
+}
+
+.pulse-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Progress Bar */
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+/* Tables */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Badges */
+.badge {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Loading Spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 0;
+    }
+    
+    .display-3 {
+        font-size: 2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3f91 100%);
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility Classes */
+.shadow-lg {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Test Type Cards */
+.test-type-card .card-body {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Recording Controls */
+.recording-controls {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Upload Progress */
+#uploadProgress {
+    margin-top: 15px;
+}
+
+/* Question Text */
+#questionText {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Timer Display */
+.alert-info {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+}
+

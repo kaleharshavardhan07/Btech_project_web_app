@@ -1,0 +1,148 @@
+<%- include('partials/header', { title: 'Test Results' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-primary text-white py-4">
+                    <h3 class="mb-0 fw-bold">
+                        <i class="bi bi-clipboard-check me-2"></i>Test Results
+                    </h3>
+                    <p class="mb-0 mt-2 opacity-75">
+                        <span class="badge bg-light text-primary"><%= test.testType.charAt(0).toUpperCase() + test.testType.slice(1) %></span>
+                        <span class="ms-2">Completed on <%= new Date(test.completedAt).toLocaleDateString() %></span>
+                    </p>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Score Summary -->
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-trophy text-warning" style="font-size: 2.5rem;"></i>
+                                    <h2 class="mt-3 fw-bold"><%= totalScore %>/<%= maxScore %></h2>
+                                    <p class="text-muted mb-0">Total Score</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-percent text-primary" style="font-size: 2.5rem;"></i>
+                                    <h2 class="mt-3 fw-bold"><%= percentage.toFixed(1) %>%</h2>
+                                    <p class="text-muted mb-0">Percentage</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-camera-video text-success" style="font-size: 2.5rem;"></i>
+                                    <h2 class="mt-3 fw-bold"><%= responses.length %></h2>
+                                    <p class="text-muted mb-0">Video Responses</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Score Interpretation -->
+                    <div class="alert alert-info border-0 mb-4">
+                        <h5 class="fw-bold mb-2">
+                            <i class="bi bi-info-circle me-2"></i>Score Interpretation
+                        </h5>
+                        <% if (percentage < 25) { %>
+                            <p class="mb-0">Your score suggests minimal symptoms. However, if you're experiencing concerns, please consult with a mental health professional.</p>
+                        <% } else if (percentage < 50) { %>
+                            <p class="mb-0">Your score indicates mild symptoms. Consider speaking with a healthcare provider about your mental health.</p>
+                        <% } else if (percentage < 75) { %>
+                            <p class="mb-0">Your score suggests moderate symptoms. We recommend consulting with a mental health professional for further evaluation.</p>
+                        <% } else { %>
+                            <p class="mb-0">Your score indicates significant symptoms. Please consider seeking professional mental health support as soon as possible.</p>
+                        <% } %>
+                    </div>
+
+                    <!-- MCQ Answers Summary -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">
+                            <i class="bi bi-list-check me-2"></i>MCQ Answers Summary
+                        </h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Your Answer</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% test.mcqAnswers.forEach((answer, index) => { %>
+                                        <tr>
+                                            <td>Question <%= index + 1 %></td>
+                                            <td><%= answer.answer %></td>
+                                            <td>
+                                                <span class="badge bg-<%= answer.score === 0 ? 'success' : answer.score === 1 ? 'info' : answer.score === 2 ? 'warning' : 'danger' %>">
+                                                    <%= answer.score %>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Video Responses -->
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">
+                            <i class="bi bi-camera-video me-2"></i>Video Responses
+                        </h5>
+                        <% if (responses.length === 0) { %>
+                            <p class="text-muted">No video responses recorded.</p>
+                        <% } else { %>
+                            <div class="row g-3">
+                                <% responses.forEach((response, index) => { %>
+                                    <div class="col-md-6">
+                                        <div class="card border">
+                                            <div class="card-body">
+                                                <h6 class="fw-bold">Question <%= response.questionId %></h6>
+                                                <p class="text-muted small mb-2">
+                                                    Duration: <%= Math.floor(response.recordingDuration / 60) %>: 
+                                                    <%= (response.recordingDuration % 60).toString().padStart(2, '0') %>
+                                                </p>
+                                                <p class="text-muted small mb-0">
+                                                    Recorded: <%= new Date(response.timestamp).toLocaleString() %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="/dashboard" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+                        </a>
+                        <a href="/test/select" class="btn btn-primary">
+                            <i class="bi bi-plus-circle me-2"></i>Take Another Test
+                        </a>
+                    </div>
+
+                    <!-- Important Notice -->
+                    <div class="alert alert-warning border-0 mt-4">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>Important:</strong> This assessment is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. 
+                        If you're experiencing a mental health crisis, please contact a mental health professional or emergency services immediately.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+

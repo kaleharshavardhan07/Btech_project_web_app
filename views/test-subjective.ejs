@@ -1,0 +1,428 @@
+<%- include('partials/header', { title: 'Subjective Test' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Permission Request Card -->
+            <div class="card border-0 shadow-lg mb-4" id="permissionCard">
+                <div class="card-body p-4 text-center">
+                    <i class="bi bi-camera-video text-primary" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3 fw-bold">Camera & Microphone Access Required</h4>
+                    <p class="text-muted">Please grant camera and microphone permissions to continue with the video test.</p>
+                    <button class="btn btn-primary btn-lg" id="requestPermissionBtn">
+                        <i class="bi bi-camera-video me-2"></i>Grant Permissions
+                    </button>
+                    <div id="permissionStatus" class="mt-3"></div>
+                </div>
+            </div>
+
+            <!-- Test Card -->
+            <div class="card border-0 shadow-lg" id="testCard" style="display: none;">
+                <div class="card-header bg-primary text-white py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="bi bi-camera-video me-2"></i>Subjective Video Test
+                        </h5>
+                        <span class="badge bg-light text-primary" id="progressBadge">Question 1/<%= questionCount %></span>
+                    </div>
+                    <div class="progress mt-3" style="height: 8px;">
+                        <div class="progress-bar bg-light" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Question Display -->
+                    <div id="questionSection">
+                        <h4 class="fw-bold mb-4" id="questionText"></h4>
+                        
+                        <!-- Reading Timer -->
+                        <div id="readingTimerSection" class="text-center mb-4">
+                            <div class="alert alert-info">
+                                <i class="bi bi-clock me-2"></i>
+                                <strong>Reading Time:</strong> <span id="readingTimer">10</span> seconds
+                            </div>
+                        </div>
+
+                        <!-- Recording Section -->
+                        <div id="recordingSection" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="video-container position-relative">
+                                        <video id="videoPreview" autoplay muted playsinline class="w-100 rounded border"></video>
+                                        <div class="recording-indicator position-absolute top-0 start-0 m-3">
+                                            <span class="badge bg-danger">
+                                                <span class="pulse-dot me-2"></span>Recording
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="recording-controls">
+                                        <div class="alert alert-warning mb-3">
+                                            <i class="bi bi-stopwatch me-2"></i>
+                                            <strong>Recording Time:</strong> <span id="recordingTimer">3:00</span>
+                                        </div>
+                                        
+                                        <div class="d-grid gap-2 mb-3">
+                                            <button class="btn btn-danger btn-lg" id="stopRecordingBtn">
+                                                <i class="bi bi-stop-fill me-2"></i>Stop Recording
+                                            </button>
+                                            <button class="btn btn-outline-primary" id="extendTimeBtn">
+                                                <i class="bi bi-plus-circle me-2"></i>Extend Time (+1 min)
+                                            </button>
+                                        </div>
+
+                                        <div id="uploadProgress" style="display: none;">
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                                     id="uploadProgressBar" style="width: 0%"></div>
+                                            </div>
+                                            <small class="text-muted">Uploading video...</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" id="prevQuestionBtn" style="display: none;">
+                            <i class="bi bi-arrow-left me-2"></i>Previous
+                        </button>
+                        <button type="button" class="btn btn-primary ms-auto" id="nextQuestionBtn" style="display: none;" disabled>
+                            Next Question<i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                        <button type="button" class="btn btn-success ms-auto" id="completeTestBtn" style="display: none;">
+                            <i class="bi bi-check-circle me-2"></i>Complete Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const questions = <%- JSON.stringify(questions) %>;
+    const questionCount = <%= questionCount %>;
+    const testId = '<%= testId %>';
+    let currentQuestion = 0;
+    let mediaStream = null;
+    let mediaRecorder = null;
+    let recordedChunks = [];
+    let readingTimer = null;
+    let recordingTimer = null;
+    let readingTimeLeft = 10;
+    let recordingTimeLeft = 180; // 3 minutes in seconds
+    let hasRecorded = new Array(questionCount).fill(false);
+    let permissionsGranted = false;
+
+    // Request permissions
+    document.getElementById('requestPermissionBtn').addEventListener('click', async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ 
+                video: true, 
+                audio: true 
+            });
+            
+            mediaStream = stream;
+            permissionsGranted = true;
+            
+            document.getElementById('permissionCard').style.display = 'none';
+            document.getElementById('testCard').style.display = 'block';
+            document.getElementById('permissionStatus').innerHTML = 
+                '<span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Permissions Granted</span>';
+            
+            // Initialize first question
+            loadQuestion();
+        } catch (error) {
+            console.error('Permission error:', error);
+            document.getElementById('permissionStatus').innerHTML = 
+                '<div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-2"></i>Failed to access camera/microphone. Please check your permissions.</div>';
+        }
+    });
+
+    function loadQuestion() {
+        // Stop any ongoing recording first
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            try {
+                mediaRecorder.stop();
+            } catch (e) {
+                console.error('Error stopping recorder:', e);
+            }
+        }
+        mediaRecorder = null;
+        recordedChunks = [];
+        
+        // Clear any existing timers
+        if (readingTimer) {
+            clearInterval(readingTimer);
+            readingTimer = null;
+        }
+        if (recordingTimer) {
+            clearInterval(recordingTimer);
+            recordingTimer = null;
+        }
+        
+        const question = questions[currentQuestion];
+        document.getElementById('questionText').textContent = question.question;
+        
+        // Reset timers
+        readingTimeLeft = 10;
+        recordingTimeLeft = 180;
+        
+        // Reset UI elements
+        document.getElementById('readingTimerSection').style.display = 'block';
+        document.getElementById('recordingSection').style.display = 'none';
+        document.getElementById('nextQuestionBtn').style.display = 'none';
+        document.getElementById('nextQuestionBtn').disabled = true;
+        
+        // Reset upload progress
+        document.getElementById('uploadProgress').style.display = 'none';
+        document.getElementById('uploadProgress').innerHTML = `
+            <div class="progress mb-2">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                     id="uploadProgressBar" style="width: 0%"></div>
+            </div>
+            <small class="text-muted">Uploading video...</small>
+        `;
+        
+        // Re-enable recording controls
+        document.getElementById('stopRecordingBtn').disabled = false;
+        document.getElementById('extendTimeBtn').disabled = false;
+        
+        // Reset recording timer display
+        document.getElementById('recordingTimer').textContent = '3:00';
+        document.getElementById('readingTimer').textContent = '10';
+        
+        // Reset video preview - stream will be reattached when recording starts
+        const videoPreview = document.getElementById('videoPreview');
+        videoPreview.srcObject = null;
+        
+        // Update progress
+        const progress = ((currentQuestion + 1) / questionCount) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('progressBadge').textContent = `Question ${currentQuestion + 1}/${questionCount}`;
+        
+        // Update navigation buttons
+        document.getElementById('prevQuestionBtn').style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+        document.getElementById('completeTestBtn').style.display = 'none';
+        
+        // Start reading timer
+        startReadingTimer();
+    }
+
+    function startReadingTimer() {
+        // Clear any existing reading timer first
+        if (readingTimer) {
+            clearInterval(readingTimer);
+        }
+        
+        document.getElementById('readingTimer').textContent = readingTimeLeft;
+        
+        readingTimer = setInterval(() => {
+            readingTimeLeft--;
+            document.getElementById('readingTimer').textContent = readingTimeLeft;
+            
+            if (readingTimeLeft <= 0) {
+                clearInterval(readingTimer);
+                readingTimer = null;
+                startRecording();
+            }
+        }, 1000);
+    }
+
+    function startRecording() {
+        document.getElementById('readingTimerSection').style.display = 'none';
+        document.getElementById('recordingSection').style.display = 'block';
+        
+        const videoPreview = document.getElementById('videoPreview');
+        videoPreview.srcObject = mediaStream;
+        
+        recordedChunks = [];
+        const options = { mimeType: 'video/webm' };
+        
+        try {
+            mediaRecorder = new MediaRecorder(mediaStream, options);
+        } catch (e) {
+            console.error('MediaRecorder error:', e);
+            alert('Your browser does not support video recording. Please use a modern browser.');
+            return;
+        }
+        
+        mediaRecorder.ondataavailable = (event) => {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+            }
+        };
+        
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            uploadVideo(blob);
+        };
+        
+        mediaRecorder.start();
+        startRecordingTimer();
+    }
+
+    function startRecordingTimer() {
+        // Clear any existing recording timer first
+        if (recordingTimer) {
+            clearInterval(recordingTimer);
+        }
+        
+        updateRecordingTimerDisplay();
+        
+        recordingTimer = setInterval(() => {
+            recordingTimeLeft--;
+            updateRecordingTimerDisplay();
+            
+            if (recordingTimeLeft <= 0) {
+                clearInterval(recordingTimer);
+                recordingTimer = null;
+                stopRecording();
+            }
+        }, 1000);
+    }
+
+    function updateRecordingTimerDisplay() {
+        const minutes = Math.floor(recordingTimeLeft / 60);
+        const seconds = recordingTimeLeft % 60;
+        document.getElementById('recordingTimer').textContent = 
+            `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            mediaRecorder.stop();
+        }
+        if (recordingTimer) {
+            clearInterval(recordingTimer);
+            recordingTimer = null;
+        }
+        
+        document.getElementById('stopRecordingBtn').disabled = true;
+        document.getElementById('extendTimeBtn').disabled = true;
+    }
+
+    document.getElementById('stopRecordingBtn').addEventListener('click', stopRecording);
+    
+    document.getElementById('extendTimeBtn').addEventListener('click', () => {
+        recordingTimeLeft += 60; // Add 1 minute
+        updateRecordingTimerDisplay();
+    });
+
+    async function uploadVideo(blob) {
+        const formData = new FormData();
+        formData.append('video', blob, `question_${currentQuestion + 1}.webm`);
+        formData.append('testId', testId);
+        formData.append('questionId', questions[currentQuestion].id);
+        formData.append('recordingDuration', 180 - recordingTimeLeft);
+        
+        document.getElementById('uploadProgress').style.display = 'block';
+        document.getElementById('uploadProgressBar').style.width = '0%';
+        
+        const xhr = new XMLHttpRequest();
+        
+        xhr.upload.addEventListener('progress', (e) => {
+            if (e.lengthComputable) {
+                const percentComplete = (e.loaded / e.total) * 100;
+                document.getElementById('uploadProgressBar').style.width = percentComplete + '%';
+            }
+        });
+        
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    hasRecorded[currentQuestion] = true;
+                    document.getElementById('uploadProgress').innerHTML = 
+                        '<div class="alert alert-success mb-0"><i class="bi bi-check-circle me-2"></i>Video uploaded successfully!</div>';
+                    document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+                    document.getElementById('nextQuestionBtn').disabled = false;
+                    
+                    // Hide recording section after successful upload
+                    document.getElementById('recordingSection').style.display = 'none';
+                    
+                    if (currentQuestion === questionCount - 1) {
+                        document.getElementById('completeTestBtn').style.display = 'inline-block';
+                        document.getElementById('nextQuestionBtn').style.display = 'none';
+                    }
+                } else {
+                    alert('Error uploading video. Please try again.');
+                    document.getElementById('stopRecordingBtn').disabled = false;
+                    document.getElementById('extendTimeBtn').disabled = false;
+                }
+            } else {
+                alert('Error uploading video. Please try again.');
+                document.getElementById('stopRecordingBtn').disabled = false;
+                document.getElementById('extendTimeBtn').disabled = false;
+            }
+        });
+        
+        xhr.addEventListener('error', () => {
+            alert('Error uploading video. Please check your connection and try again.');
+            document.getElementById('stopRecordingBtn').disabled = false;
+            document.getElementById('extendTimeBtn').disabled = false;
+        });
+        
+        xhr.open('POST', '/test/upload-video');
+        xhr.send(formData);
+    }
+
+    document.getElementById('nextQuestionBtn').addEventListener('click', () => {
+        if (currentQuestion < questionCount - 1) {
+            currentQuestion++;
+            loadQuestion();
+        }
+    });
+
+    document.getElementById('prevQuestionBtn').addEventListener('click', () => {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            loadQuestion();
+        }
+    });
+
+    document.getElementById('completeTestBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('completeTestBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Completing...';
+        
+        try {
+            const response = await fetch('/test/complete-subjective', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ testId })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                window.location.href = `/test/results/${testId}`;
+            } else {
+                alert('Error completing test. Please try again.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Complete Test';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error completing test. Please try again.');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Complete Test';
+        }
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        if (mediaStream) {
+            mediaStream.getTracks().forEach(track => track.stop());
+        }
+    });
+</script>
+
+<%- include('partials/footer') %>
+
