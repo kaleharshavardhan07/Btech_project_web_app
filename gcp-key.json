@@ -1,13 +1,1 @@
-{
-  "type": "service_account",
-  "project_id": "mental-health-487009",
-  "private_key_id": "11fc5f465434511cc467baa2d1d25017a93ec3de",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQClkBMsMWaqHoWe\neUUvDBCBqFdtWj6uP4GMwrBAFLqqXmuzVtioFT2Q0Gzhd/nBXP8UQfadU7O/MNxk\n/NVEZSEbArjE+fq65IBq/oUvS5NWBdQ8qDNOfSJTTYH6gIeXIW2c7vLObFESgVYK\nCNx+dJcrw5d2/hbQ+4G+wq5neweVDOCaZJXItiOa31PsqPfngQRqn+DWPGRuiiAK\nL2cVJC14sEZlFVL3zgz1qp9VLW+LSQ0udtByqtjBsYOXO0Vs6cds0aj23tPACZkR\nOyazXPZWSm7x25EltTZOdBhvFjccF/dlE/HRxN6WyVCbFxerka89a4SivRAFXLqc\nE8aNIHSvAgMBAAECggEANbsVTdFWhT1UlgK7XjJnJP0SKo4QK5K2o40HkDRqBCKS\nh2hW9e22xkmuHFpIduWMbvGdbJ+ehR0BWdDoEcNURCTU/DA4m/DOcGrbpGa9kTxh\nDbJ0vDNGMYzE8xxFZNnXbgfqSu3CPeQ1nRoVHQEPkodun5KEqxwElnkuCq1V35wB\ndxwzykGeTNHtASzmqYu1q5UogjtTeX6rXefcA2Q7ww11wLKUktfFE0qgRozK5H8R\npymub6Oe7MbF4ov0AA/lQA3FbUbyYG2JSau2562G9EBuoOu6ZbpFu/BzarexsaYR\n3s4q17Mhl58yzOxwl3xI862iKnAJG8fiwMgaIO/qgQKBgQDYpfAfZqpqyv4FjEit\nhS3m4QzQk5dwvhjIIt9f0D1SpvX0OaO+PGSLjgHYvMMmtPIKuNiKNash9U9zftqO\njUVFBkQFaLZ2A8mwdbn1HIPYJCqMN0lTf9SwTh8k3XDWvJEPXiRcSsXeuATJWyCy\ndqLit+N9JmQMHDm0fhAUZVribwKBgQDDoq8wUG6IgU3vk87xM6fM17EtXxaN1AUy\n68+8BvjY4MIrxaL8maiBI66O8w9I5+/6I7s25nH3w/krrbbNq5AUfFnK8xPZMv0f\nZOhyOC1ssv4W1GWYJ8ns/kukogOXdYtRQw6FiF5Y90CFazrmVUOHeEW5IOrmkYM8\nUhjklkOxwQKBgFIf3P1aQqGG33Ik8mvsfzD1AJGUUSTouqYrKfe9DXHmXne83chA\nRnDsXODW9TcYAmR0G4mQvJV70ylZ3emJvcdjj6dpQTlNSEg+6EX1EDl/xC0wy/f+\nDhbjFkU4OAz+oBJuQmRF5+n8Ybweci+Ubzx4LqEDS4uXq3wzCU9h+Gi7AoGBAKAV\n871ZU9mn1ZqCHQkK9/iLV5SFBvOv10E/7ZEzM1ZlNP6UjzaclmJ2TFT1WECUaq8J\nphzanc/dMXwofjn2dcQNrXyBRHCrZK3X6M3uYl1casdLroa/qGCiBkwFt2Ks8P/i\nG3PxjyLF0KpcgKoSg1vLc2J2KUHbOMSXeX8z5tkBAoGBAKhzfXWW9Wu5guPDYUTL\ntluCXbCYiPo5wEHiv3EUG8VU+D73Xi7BfqI3EiSXFE0PGn0xLcqwdQ6+o+D3odx2\nSsFAAByz3TlSJ2k1q0OVDbAdNVOnjyijz0MhwS/jYiFOyvx3kpI0wQ35D1KSakzk\nLhlcW3w7gckezSbbYNTJLTf8\n-----END PRIVATE KEY-----\n",
-  "client_email": "node-backend-uploader@mental-health-487009.iam.gserviceaccount.com",
-  "client_id": "117888973364034091780",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/node-backend-uploader%40mental-health-487009.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}
+
