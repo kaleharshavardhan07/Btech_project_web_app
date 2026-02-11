@@ -40,5 +40,95 @@
     </div>
 </div>
 
+<!-- Confirmation Modal -->
+<div class="modal fade" id="patientConfirmModal" tabindex="-1" aria-labelledby="patientConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="patientConfirmModalLabel">
+            <i class="bi bi-shield-check text-primary me-2"></i>Confirm Patient Data
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-2">
+            You are about to start the <span id="selectedTestName" class="fw-semibold"></span> assessment.
+        </p>
+        <p class="small text-muted mb-3">
+            For building our dataset, it is important to know whether these answers and video recordings
+            belong to a <strong>real patient</strong> and are being used with their <strong>informed consent</strong>.
+        </p>
+        <div class="alert alert-warning small mb-0">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            Please select <strong>"Yes, real patient"</strong> only if:
+            <ul class="mb-0 mt-2">
+                <li>You are recording data from an actual patient.</li>
+                <li>The patient has agreed to use this data for research/dataset purposes.</li>
+            </ul>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            Cancel
+        </button>
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-primary" id="notRealPatientBtn">
+                No, demo / not real patient
+            </button>
+            <button type="button" class="btn btn-success" id="realPatientBtn">
+                Yes, real patient (TRUE)
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Enhanced confirmation before starting any test (TRUE/FALSE style with modal)
+    document.addEventListener('DOMContentLoaded', () => {
+        const modalElement = document.getElementById('patientConfirmModal');
+        const selectedTestNameEl = document.getElementById('selectedTestName');
+        const realPatientBtn = document.getElementById('realPatientBtn');
+        const notRealPatientBtn = document.getElementById('notRealPatientBtn');
+
+        let selectedTestUrl = null;
+
+        const bsModal = new bootstrap.Modal(modalElement, {
+            backdrop: 'static',
+            keyboard: false
+        });
+
+        document.querySelectorAll('.test-type-card a.btn-primary').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const testName =
+                    button.closest('.test-type-card')?.querySelector('h4')?.textContent?.trim() ||
+                    'this test';
+
+                selectedTestUrl = button.href;
+                selectedTestNameEl.textContent = testName;
+
+                bsModal.show();
+            });
+        });
+
+        // User confirms this is REAL patient data (TRUE)
+        realPatientBtn.addEventListener('click', () => {
+            if (!selectedTestUrl) return;
+            const url = new URL(selectedTestUrl, window.location.origin);
+            url.searchParams.set('verified', 'true');
+            window.location.href = url.toString();
+        });
+
+        // User indicates demo / NOT real patient data (FALSE) -> just close modal, do not start test
+        notRealPatientBtn.addEventListener('click', () => {
+            selectedTestUrl = null;
+            bsModal.hide();
+        });
+    });
+</script>
+
 <%- include('partials/footer') %>
 

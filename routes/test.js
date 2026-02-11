@@ -5,8 +5,10 @@ const path = require('path');
 const fs = require('fs');
 const Test = require('../models/Test');
 const Response = require('../models/Response');
-const mcqQuestions = require('../data/mcqQuestions.json');
-const subjectiveQuestions = require('../data/subjectiveQuestions.json');
+const depressionTest = require('../data/tests/depression.json');
+const anxietyTest = require('../data/tests/anxiety.json');
+const stressTest = require('../data/tests/stress.json');
+const ptsdTest = require('../data/tests/ptsd.json');
 const { requireAuth } = require('../middleware/auth');
 
 // Configure multer for video uploads
@@ -40,6 +42,13 @@ const upload = multer({
   }
 });
 
+const testDataMap = {
+  depression: depressionTest,
+  anxiety: anxietyTest,
+  stress: stressTest,
+  ptsd: ptsdTest
+};
+
 // Test selection page
 router.get('/select', requireAuth, (req, res) => {
   const testTypes = [
@@ -54,30 +63,41 @@ router.get('/select', requireAuth, (req, res) => {
 // MCQ test page
 router.get('/mcq/:testType', requireAuth, (req, res) => {
   const { testType } = req.params;
-  const questions = mcqQuestions[testType];
-  
-  if (!questions) {
+  const testData = testDataMap[testType];
+
+  if (!testData || !Array.isArray(testData.mcq)) {
     return res.redirect('/test/select');
   }
+
+  const questions = testData.mcq;
+
+  // Was this test explicitly confirmed as real patient data?
+  const isRealPatientData = req.query.verified === 'true';
 
   res.render('test-mcq', { 
     testType, 
     questions,
-    questionCount: questions.length 
+    questionCount: questions.length,
+    isRealPatientData
   });
 });
 
 // Submit MCQ answers
 router.post('/mcq', requireAuth, async (req, res) => {
   try {
-    const { testType, answers } = req.body;
+    const { testType, answers, isRealPatientData } = req.body;
     const userId = req.session.userId;
 
     if (!testType || !answers) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const questions = mcqQuestions[testType];
+    const testData = testDataMap[testType];
+    if (!testData || !Array.isArray(testData.mcq)) {
+      return res.status(400).json({ error: 'Invalid test type' });
+    }
+
+    const questions = testData.mcq;
     const mcqAnswers = [];
 
     // Process answers
@@ -99,7 +119,8 @@ router.post('/mcq', requireAuth, async (req, res) => {
       userId,
       testType,
       mcqAnswers,
-      mcqCompleted: true
+      mcqCompleted: true,
+      isRealPatientData: isRealPatientData === true || isRealPatientData === 'true'
     });
     await test.save();
 
@@ -121,10 +142,12 @@ router.get('/subjective/:testId', requireAuth, async (req, res) => {
       return res.redirect('/dashboard');
     }
 
-    const questions = subjectiveQuestions[test.testType];
-    if (!questions) {
+    const testData = testDataMap[test.testType];
+    if (!testData || !Array.isArray(testData.subjective)) {
       return res.redirect('/dashboard');
     }
+
+    const questions = testData.subjective;
 
     res.render('test-subjective', {
       testId,
@@ -160,11 +183,36 @@ router.post('/upload-video', requireAuth, upload.single('video'), async (req, re
       return res.status(403).json({ error: 'Unauthorized' });
     }
 
-    // Save response
+    // Build target directory based on test type (e.g. uploads/videos/depression)
+    const baseDir = 'uploads/videos';
+    const testFolderName = test.testType || 'unknown';
+    const targetDir = path.join(baseDir, testFolderName);
+
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+
+    // Build filename as "<username>_q<questionId>_<timestamp>.webm"
+    const rawUserName = req.session.userName || req.session.userId.toString() || 'user';
+    const safeUserName = rawUserName
+      .toString()
+      .trim()
+      .replace(/\s+/g, '_')
+      .replace(/[^a-zA-Z0-9_\-]/g, '');
+
+    const safeQuestionId = parseInt(questionId);
+    const finalFileName = `${safeUserName}_q${safeQuestionId}.webm`;
+
+    const finalPath = path.join(targetDir, finalFileName);
+
+    // Move file from temporary location to final structured path
+    fs.renameSync(req.file.path, finalPath);
+
+    // Save response with new video path
     const response = new Response({
       testId,
       questionId: parseInt(questionId),
-      videoPath: req.file.path,
+      videoPath: finalPath,
       recordingDuration: parseInt(recordingDuration)
     });
     await response.save();

@@ -11,6 +11,11 @@ const testSchema = new mongoose.Schema({
     required: true,
     enum: ['depression', 'anxiety', 'stress', 'ptsd', 'bipolar', 'ocd']
   },
+  // Whether this test data belongs to a real patient and was explicitly confirmed
+  isRealPatientData: {
+    type: Boolean,
+    default: false
+  },
   mcqAnswers: [{
     questionId: Number,
     answer: String,

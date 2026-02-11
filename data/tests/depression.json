@@ -1,0 +1,131 @@
+{
+  "testType": "depression",
+  "name": "Depression",
+  "mcq": [
+    {
+      "id": 1,
+      "question": "How often do you feel sad or down?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How is your appetite?",
+      "options": ["Normal", "Slightly reduced", "Significantly reduced", "No appetite"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you feel tired or lack energy?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel hopeless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you have difficulty concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you lose interest in activities you used to enjoy?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you feel worthless or guilty?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you have thoughts of self-harm?",
+      "options": ["Never", "Rarely", "Sometimes", "Often"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you feel restless or agitated?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How is your ability to make decisions?",
+      "options": ["Excellent", "Good", "Fair", "Poor"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you feel anxious or worried?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How would you rate your overall mood?",
+      "options": ["Very good", "Good", "Fair", "Poor"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you feel isolated or disconnected from others?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How often do you feel like crying?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "subjective": [
+    {
+      "id": 1,
+      "question": "Describe a recent situation that made you feel overwhelmed or hopeless."
+    },
+    {
+      "id": 2,
+      "question": "What activities or hobbies used to bring you joy, and how has that changed?"
+    },
+    {
+      "id": 3,
+      "question": "How would you describe your sleep patterns and quality of sleep?"
+    },
+    {
+      "id": 4,
+      "question": "Tell us about your relationships with family and friends. How have they been affected?"
+    },
+    {
+      "id": 5,
+      "question": "Describe how your energy levels and motivation have changed recently."
+    },
+    {
+      "id": 6,
+      "question": "What thoughts or feelings do you experience when you wake up in the morning?"
+    },
+    {
+      "id": 7,
+      "question": "How do you cope with difficult emotions or situations?"
+    },
+    {
+      "id": 8,
+      "question": "What would you like to change about your current mental state?"
+    }
+  ]
+}
+

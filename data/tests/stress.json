@@ -1,0 +1,131 @@
+{
+  "testType": "stress",
+  "name": "Stress",
+  "mcq": [
+    {
+      "id": 1,
+      "question": "How often do you feel overwhelmed?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have trouble relaxing?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How often do you feel irritable or angry?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you experience headaches or muscle pain?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel tired or exhausted?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you worry about work or responsibilities?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you feel like you have too much to do?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you feel anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you have difficulty making decisions?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How often do you feel restless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you experience changes in appetite?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How often do you feel like you're losing control?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you have trouble concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does stress affect your daily activities?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "subjective": [
+    {
+      "id": 1,
+      "question": "Describe a recent situation that made you feel stressed or overwhelmed."
+    },
+    {
+      "id": 2,
+      "question": "How do you typically respond to stressful situations?"
+    },
+    {
+      "id": 3,
+      "question": "What are the main sources of stress in your life right now?"
+    },
+    {
+      "id": 4,
+      "question": "How does stress affect your physical health and well-being?"
+    },
+    {
+      "id": 5,
+      "question": "Describe how stress impacts your work or daily responsibilities."
+    },
+    {
+      "id": 6,
+      "question": "What coping mechanisms do you use when feeling stressed?"
+    },
+    {
+      "id": 7,
+      "question": "How does stress affect your relationships with others?"
+    },
+    {
+      "id": 8,
+      "question": "What changes would help reduce your stress levels?"
+    }
+  ]
+}
+

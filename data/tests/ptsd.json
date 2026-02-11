@@ -1,0 +1,131 @@
+{
+  "testType": "ptsd",
+  "name": "PTSD",
+  "mcq": [
+    {
+      "id": 1,
+      "question": "Have you experienced a traumatic event?",
+      "options": ["No", "Yes, but not bothered", "Yes, somewhat bothered", "Yes, very bothered"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you have recurring memories of the traumatic event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "Do you have nightmares about the event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you avoid reminders of the traumatic event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "Do you feel emotionally numb?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you feel detached from others?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "Do you experience flashbacks?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Are you easily startled?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "Do you have trouble sleeping?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you feel irritable or have angry outbursts?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "Do you have difficulty concentrating?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you feel hypervigilant?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "Do you have negative thoughts about yourself or the world?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you feel guilt or shame about the event?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does this affect your daily life?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "subjective": [
+    {
+      "id": 1,
+      "question": "Can you describe the traumatic event you experienced? (Only share what you're comfortable with)"
+    },
+    {
+      "id": 2,
+      "question": "How do you feel when you're reminded of the traumatic event?"
+    },
+    {
+      "id": 3,
+      "question": "Describe how the trauma has affected your daily life and functioning."
+    },
+    {
+      "id": 4,
+      "question": "What triggers cause you to relive the traumatic experience?"
+    },
+    {
+      "id": 5,
+      "question": "How has the trauma affected your relationships with others?"
+    },
+    {
+      "id": 6,
+      "question": "Describe your sleep patterns and any nightmares or flashbacks you experience."
+    },
+    {
+      "id": 7,
+      "question": "How do you cope with the emotional impact of the trauma?"
+    },
+    {
+      "id": 8,
+      "question": "What support systems or resources have been helpful in your recovery?"
+    }
+  ]
+}
+

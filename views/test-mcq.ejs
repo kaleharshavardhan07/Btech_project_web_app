@@ -45,6 +45,7 @@
 <script>
     const questions = <%- JSON.stringify(questions) %>;
     const questionCount = <%= questionCount %>;
+    const isRealPatientFlag = <%= isRealPatientData ? 'true' : 'false' %>;  
     let currentQuestion = 0;
     const answers = new Array(questionCount).fill(null);
 
@@ -121,7 +122,8 @@
                 },
                 body: JSON.stringify({
                     testType: '<%= testType %>',
-                    answers: answers
+                    answers: answers,
+                    isRealPatientData: isRealPatientFlag
                 })
             });
 

@@ -1,0 +1,131 @@
+{
+  "testType": "anxiety",
+  "name": "Anxiety",
+  "mcq": [
+    {
+      "id": 1,
+      "question": "How often do you feel nervous or anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 2,
+      "question": "Do you experience panic attacks?",
+      "options": ["Never", "Rarely", "Sometimes", "Often"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 3,
+      "question": "How often do you worry excessively?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 4,
+      "question": "Do you have trouble controlling your worries?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 5,
+      "question": "How often do you feel restless?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 6,
+      "question": "Do you experience physical symptoms like rapid heartbeat?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 7,
+      "question": "How often do you avoid situations that make you anxious?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 8,
+      "question": "Do you have trouble sleeping due to anxiety?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 9,
+      "question": "How often do you feel tense or on edge?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 10,
+      "question": "Do you experience muscle tension?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 11,
+      "question": "How often do you feel irritable?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 12,
+      "question": "Do you have difficulty concentrating due to anxiety?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 13,
+      "question": "How often do you feel like something bad will happen?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 14,
+      "question": "Do you experience shortness of breath or dizziness?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
+      "scores": [0, 1, 2, 3]
+    },
+    {
+      "id": 15,
+      "question": "How much does anxiety interfere with your daily life?",
+      "options": ["Not at all", "A little", "Moderately", "Severely"],
+      "scores": [0, 1, 2, 3]
+    }
+  ],
+  "subjective": [
+    {
+      "id": 1,
+      "question": "Describe a situation that triggers your anxiety. What happens physically and emotionally?"
+    },
+    {
+      "id": 2,
+      "question": "How do you typically respond when you feel anxious or worried?"
+    },
+    {
+      "id": 3,
+      "question": "What situations or places do you avoid because of anxiety?"
+    },
+    {
+      "id": 4,
+      "question": "Describe how anxiety affects your ability to focus or complete tasks."
+    },
+    {
+      "id": 5,
+      "question": "Tell us about your sleep patterns and how anxiety might be affecting them."
+    },
+    {
+      "id": 6,
+      "question": "How does anxiety impact your relationships with others?"
+    },
+    {
+      "id": 7,
+      "question": "What physical symptoms do you experience when anxious?"
+    },
+    {
+      "id": 8,
+      "question": "What strategies have you tried to manage your anxiety, and how effective were they?"
+    }
+  ]
+}
+
