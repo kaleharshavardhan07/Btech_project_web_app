@@ -31,25 +31,45 @@
                     </div>
                 </div>
                 <div class="card-body p-4">
+                    <!-- Test Instructions -->
+                    <div class="alert alert-secondary mb-4" id="testInstructions">
+                        <h6 class="fw-bold mb-2"><i class="bi bi-info-circle me-2"></i>How this test works</h6>
+                        <ul class="mb-0">
+                            <li><strong>Reading time:</strong> You get <strong>14 seconds</strong> to read each question.</li>
+                            <li><strong>Recording time:</strong> You get <strong>3 minutes</strong> to answer on video.</li>
+                            <li><strong>Extend time:</strong> You can add <strong>+1 minute</strong> using the “Extend Time” button.</li>
+                        </ul>
+                        <div class="mt-4">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-camera me-2"></i>Camera preview</h6>
+                            <p class="text-muted mb-2">Align your camera so your face is clearly visible. When ready, click OK to start.</p>
+                            <video id="instructionPreview" autoplay muted playsinline class="w-60 rounded border d-block mx-auto"></video>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <button type="button" class="btn btn-success btn-lg" id="startSubjectiveBtn">
+                                <i class="bi bi-check-circle me-2"></i>OK, Start Test
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Question Display -->
-                    <div id="questionSection">
+                    <div id="questionSection" style="display: none;">
                         <h4 class="fw-bold mb-4" id="questionText"></h4>
                         
                         <!-- Reading Timer -->
                         <div id="readingTimerSection" class="text-center mb-4">
                             <div class="alert alert-info">
                                 <i class="bi bi-clock me-2"></i>
-                                <strong>Reading Time:</strong> <span id="readingTimer">10</span> seconds
+                                <strong>Reading Time:</strong> <span id="readingTimer">14</span> seconds
                             </div>
                         </div>
 
-                        <!-- Recording Section -->
-                        <div id="recordingSection" style="display: none;">
+                        <!-- Recording Section (camera preview always visible after permission) -->
+                        <div id="recordingSection">
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="video-container position-relative">
                                         <video id="videoPreview" autoplay muted playsinline class="w-100 rounded border"></video>
-                                        <div class="recording-indicator position-absolute top-0 start-0 m-3">
+                                        <div id="recordingIndicator" class="recording-indicator position-absolute top-0 start-0 m-3">
                                             <span class="badge bg-danger">
                                                 <span class="pulse-dot me-2"></span>Recording
                                             </span>
@@ -113,10 +133,12 @@
     let recordedChunks = [];
     let readingTimer = null;
     let recordingTimer = null;
-    let readingTimeLeft = 10;
+    let readingTimeLeft = 14;
     let recordingTimeLeft = 180; // 3 minutes in seconds
     let hasRecorded = new Array(questionCount).fill(false);
     let permissionsGranted = false;
+    let isRecording = false;
+    let instructionsAccepted = false;
 
     // Request permissions
     document.getElementById('requestPermissionBtn').addEventListener('click', async () => {
@@ -128,19 +150,45 @@
             
             mediaStream = stream;
             permissionsGranted = true;
+
+            // Attach stream to preview immediately so user always sees themselves
+            const videoPreview = document.getElementById('videoPreview');
+            videoPreview.srcObject = mediaStream;
+
+            // Also show preview in instructions
+            const instructionPreview = document.getElementById('instructionPreview');
+            if (instructionPreview) {
+                instructionPreview.srcObject = mediaStream;
+            }
+
+            // Initially, not recording: hide indicator and disable controls
+            const recordingIndicator = document.getElementById('recordingIndicator');
+            if (recordingIndicator) {
+                recordingIndicator.style.display = 'none';
+            }
+            document.getElementById('stopRecordingBtn').disabled = true;
+            document.getElementById('extendTimeBtn').disabled = true;
             
             document.getElementById('permissionCard').style.display = 'none';
             document.getElementById('testCard').style.display = 'block';
             document.getElementById('permissionStatus').innerHTML = 
                 '<span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Permissions Granted</span>';
-            
-            // Initialize first question
-            loadQuestion();
+
+            // Show instructions first
+            document.getElementById('testInstructions').style.display = 'block';
+            document.getElementById('questionSection').style.display = 'none';
         } catch (error) {
             console.error('Permission error:', error);
             document.getElementById('permissionStatus').innerHTML = 
                 '<div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-2"></i>Failed to access camera/microphone. Please check your permissions.</div>';
         }
+    });
+
+    document.getElementById('startSubjectiveBtn').addEventListener('click', () => {
+        instructionsAccepted = true;
+        document.getElementById('testInstructions').style.display = 'none';
+        document.getElementById('questionSection').style.display = 'block';
+        loadQuestion();
     });
 
     function loadQuestion() {
@@ -169,14 +217,19 @@
         document.getElementById('questionText').textContent = question.question;
         
         // Reset timers
-        readingTimeLeft = 10;
+        readingTimeLeft = 14;
         recordingTimeLeft = 180;
         
         // Reset UI elements
         document.getElementById('readingTimerSection').style.display = 'block';
-        document.getElementById('recordingSection').style.display = 'none';
         document.getElementById('nextQuestionBtn').style.display = 'none';
         document.getElementById('nextQuestionBtn').disabled = true;
+
+        // Ensure recording section is visible for the new question
+        const recordingSection = document.getElementById('recordingSection');
+        if (recordingSection) {
+            recordingSection.style.display = 'block';
+        }
         
         // Reset upload progress
         document.getElementById('uploadProgress').style.display = 'none';
@@ -188,17 +241,19 @@
             <small class="text-muted">Uploading video...</small>
         `;
         
-        // Re-enable recording controls
-        document.getElementById('stopRecordingBtn').disabled = false;
-        document.getElementById('extendTimeBtn').disabled = false;
+        // Reset recording controls (will be enabled when recording starts)
+        document.getElementById('stopRecordingBtn').disabled = true;
+        document.getElementById('extendTimeBtn').disabled = true;
         
         // Reset recording timer display
         document.getElementById('recordingTimer').textContent = '3:00';
-        document.getElementById('readingTimer').textContent = '10';
+        document.getElementById('readingTimer').textContent = '14';
         
-        // Reset video preview - stream will be reattached when recording starts
-        const videoPreview = document.getElementById('videoPreview');
-        videoPreview.srcObject = null;
+        // Ensure recording indicator is hidden when not recording
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        if (recordingIndicator) {
+            recordingIndicator.style.display = 'none';
+        }
         
         // Update progress
         const progress = ((currentQuestion + 1) / questionCount) * 100;
@@ -235,7 +290,6 @@
 
     function startRecording() {
         document.getElementById('readingTimerSection').style.display = 'none';
-        document.getElementById('recordingSection').style.display = 'block';
         
         const videoPreview = document.getElementById('videoPreview');
         videoPreview.srcObject = mediaStream;
@@ -263,6 +317,16 @@
         };
         
         mediaRecorder.start();
+        isRecording = true;
+
+        // Show indicator and enable controls while recording
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        if (recordingIndicator) {
+            recordingIndicator.style.display = 'block';
+        }
+        document.getElementById('stopRecordingBtn').disabled = false;
+        document.getElementById('extendTimeBtn').disabled = false;
+
         startRecordingTimer();
     }
 
@@ -297,6 +361,7 @@
         if (mediaRecorder && mediaRecorder.state !== 'inactive') {
             mediaRecorder.stop();
         }
+        isRecording = false;
         if (recordingTimer) {
             clearInterval(recordingTimer);
             recordingTimer = null;
@@ -304,6 +369,12 @@
         
         document.getElementById('stopRecordingBtn').disabled = true;
         document.getElementById('extendTimeBtn').disabled = true;
+
+        // Hide recording indicator when recording stops
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        if (recordingIndicator) {
+            recordingIndicator.style.display = 'none';
+        }
     }
 
     document.getElementById('stopRecordingBtn').addEventListener('click', stopRecording);

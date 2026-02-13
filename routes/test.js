@@ -9,7 +9,7 @@ const depressionTest = require('../data/tests/depression.json');
 const anxietyTest = require('../data/tests/anxiety.json');
 const stressTest = require('../data/tests/stress.json');
 const ptsdTest = require('../data/tests/ptsd.json');
-const { requireAuth } = require('../middleware/auth');
+const { requireAuth, requireConsent } = require('../middleware/auth');
 
 // Configure multer for video uploads
 const storage = multer.diskStorage({
@@ -49,8 +49,11 @@ const testDataMap = {
   ptsd: ptsdTest
 };
 
+// Require authentication and consent for all test routes
+router.use(requireAuth, requireConsent);
+
 // Test selection page
-router.get('/select', requireAuth, (req, res) => {
+router.get('/select', (req, res) => {
   const testTypes = [
     { id: 'depression', name: 'Depression', icon: '😔' },
     { id: 'anxiety', name: 'Anxiety', icon: '😰' },

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Test = require('../models/Test');
-const { requireAuth } = require('../middleware/auth');
+const { requireAuth, requireConsent } = require('../middleware/auth');
 
 // Dashboard
-router.get('/', requireAuth, async (req, res) => {
+router.get('/', requireAuth, requireConsent, async (req, res) => {
   try {
     const userId = req.session.userId;
     const tests = await Test.find({ userId })

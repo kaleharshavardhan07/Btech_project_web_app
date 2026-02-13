@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const { redirectIfAuthenticated } = require('../middleware/auth');
+const { requireAuth, redirectIfAuthenticated } = require('../middleware/auth');
 
 // Signup page
 router.get('/signup', redirectIfAuthenticated, (req, res) => {
@@ -35,7 +35,8 @@ router.post('/signup', redirectIfAuthenticated, async (req, res) => {
     // Set session
     req.session.userId = user._id;
     req.session.userName = user.name;
-    res.redirect('/dashboard');
+    req.session.consentAccepted = user.consentAccepted === true;
+    res.redirect('/consent');
   } catch (error) {
     console.error('Signup error:', error);
     res.render('signup', { error: 'An error occurred. Please try again.' });
@@ -69,10 +70,45 @@ router.post('/login', redirectIfAuthenticated, async (req, res) => {
     // Set session
     req.session.userId = user._id;
     req.session.userName = user.name;
-    res.redirect('/dashboard');
+    req.session.consentAccepted = user.consentAccepted === true;
+
+    if (user.consentAccepted) {
+      return res.redirect('/dashboard');
+    }
+    return res.redirect('/consent');
   } catch (error) {
     console.error('Login error:', error);
     res.render('login', { error: 'An error occurred. Please try again.' });
+  }
+});
+
+// Consent page
+router.get('/consent', requireAuth, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userId).select('consentAccepted');
+    if (user && user.consentAccepted) {
+      req.session.consentAccepted = true;
+      return res.redirect('/dashboard');
+    }
+    return res.render('consent');
+  } catch (error) {
+    console.error('Consent page error:', error);
+    return res.render('consent');
+  }
+});
+
+// Consent accept handler
+router.post('/consent/accept', requireAuth, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.session.userId, {
+      consentAccepted: true,
+      consentAcceptedAt: new Date()
+    });
+    req.session.consentAccepted = true;
+    return res.redirect('/dashboard');
+  } catch (error) {
+    console.error('Consent accept error:', error);
+    return res.redirect('/consent');
   }
 });
 

@@ -30,6 +30,14 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ['Male', 'Female', 'Other', 'Prefer not to say']
   },
+  consentAccepted: {
+    type: Boolean,
+    default: false
+  },
+  consentAcceptedAt: {
+    type: Date,
+    default: null
+  },
   createdAt: {
     type: Date,
     default: Date.now

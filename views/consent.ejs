@@ -1,0 +1,52 @@
+<%- include('partials/header', { title: 'Consent' }) %>
+<%- include('partials/navbar') %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-lg">
+        <div class="card-header bg-primary text-white py-3">
+          <h4 class="mb-0 fw-bold">
+            <i class="bi bi-shield-check me-2"></i>Informed Consent
+          </h4>
+        </div>
+        <div class="card-body p-4">
+          <p class="text-muted mb-4">
+            To continue, please review and accept this consent for data collection during your assessment.
+          </p>
+
+          <div class="alert alert-info">
+            <h6 class="fw-bold mb-2"><i class="bi bi-camera-video me-2"></i>What we collect</h6>
+            <ul class="mb-0">
+              <li>Video and audio recordings during subjective tests</li>
+              <li>Your responses to assessment questions</li>
+              <li>Basic account information needed to manage your test</li>
+            </ul>
+          </div>
+
+          <div class="alert alert-warning">
+            <h6 class="fw-bold mb-2"><i class="bi bi-info-circle me-2"></i>Why we collect it</h6>
+            <p class="mb-0">
+              We use video/audio and responses to evaluate your assessment. Your data is stored securely and used only for this project.
+            </p>
+          </div>
+
+          <div class="alert alert-secondary">
+            <h6 class="fw-bold mb-2"><i class="bi bi-lock me-2"></i>Your control</h6>
+            <p class="mb-0">
+              You can stop the test at any time. If you do not agree, please do not proceed.
+            </p>
+          </div>
+
+          <form action="/consent/accept" method="POST" class="mt-4">
+            <button type="submit" class="btn btn-success btn-lg w-100">
+              <i class="bi bi-check-circle me-2"></i>I Accept
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
