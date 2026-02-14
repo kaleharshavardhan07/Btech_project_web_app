@@ -156,7 +156,8 @@ router.get('/subjective/:testId', requireAuth, async (req, res) => {
       testId,
       testType: test.testType,
       questions,
-      questionCount: questions.length
+      questionCount: questions.length,
+      userName: req.session.userName
     });
   } catch (error) {
     console.error('Subjective test error:', error);

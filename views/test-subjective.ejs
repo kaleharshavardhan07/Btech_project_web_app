@@ -127,6 +127,8 @@
     const questions = <%- JSON.stringify(questions) %>;
     const questionCount = <%= questionCount %>;
     const testId = '<%= testId %>';
+    const testType = '<%= testType %>';
+    const userName = '<%= userName %>';
     let currentQuestion = 0;
     let mediaStream = null;
     let mediaRecorder = null;
@@ -385,8 +387,9 @@
     });
 
     async function uploadVideo(blob) {
-        // Download video to user's device
-        const filename = `${testId}_question_${currentQuestion + 1}.webm`;
+        // Download video to user's device with descriptive filename
+        const sanitizedName = userName.replace(/[^a-zA-Z0-9]/g, '_');
+        const filename = `${sanitizedName}_${testType}_question_${currentQuestion + 1}.webm`;
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
