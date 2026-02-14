@@ -6,41 +6,29 @@
     },
     {
       "id": 2,
-      "question": "What activities or hobbies used to bring you joy, and how has that changed?"
+      "question": "How has your energy level affected your daily routine?"
     },
     {
       "id": 3,
-      "question": "How would you describe your sleep patterns and quality of sleep?"
+      "question": "Describe any changes you have noticed in your sleep or eating patterns."
     },
     {
       "id": 4,
-      "question": "Tell us about your relationships with family and friends. How have they been affected?"
+      "question": "How have these feelings affected your relationships or responsibilities?"
     },
     {
       "id": 5,
       "question": "Describe how your energy levels and motivation have changed recently."
-    },
-    {
-      "id": 6,
-      "question": "What thoughts or feelings do you experience when you wake up in the morning?"
-    },
-    {
-      "id": 7,
-      "question": "How do you cope with difficult emotions or situations?"
-    },
-    {
-      "id": 8,
-      "question": "What would you like to change about your current mental state?"
     }
   ],
   "anxiety": [
     {
       "id": 1,
-      "question": "Describe a situation that triggers your anxiety. What happens physically and emotionally?"
+      "question": "Describe the types of things you worry about most in your daily life."
     },
     {
       "id": 2,
-      "question": "How do you typically respond when you feel anxious or worried?"
+      "question": "How does worry affect your ability to relax or enjoy free time?"
     },
     {
       "id": 3,
@@ -48,91 +36,55 @@
     },
     {
       "id": 4,
-      "question": "Describe how anxiety affects your ability to focus or complete tasks."
+      "question": "Describe how anxiety affects your decision-making or confidence."
     },
     {
       "id": 5,
-      "question": "Tell us about your sleep patterns and how anxiety might be affecting them."
-    },
-    {
-      "id": 6,
-      "question": "How does anxiety impact your relationships with others?"
-    },
-    {
-      "id": 7,
-      "question": "What physical symptoms do you experience when anxious?"
-    },
-    {
-      "id": 8,
-      "question": "What strategies have you tried to manage your anxiety, and how effective were they?"
+      "question": "Describe how long your anxious thoughts usually last and how you cope with them."
     }
   ],
   "stress": [
     {
       "id": 1,
-      "question": "Describe a recent situation that made you feel stressed or overwhelmed."
+      "question": "Describe thoughts that repeatedly enter your mind even when you try to ignore them."
     },
     {
       "id": 2,
-      "question": "How do you typically respond to stressful situations?"
+      "question": "Explain any repetitive behaviors you perform to reduce discomfort or anxiety."
     },
     {
       "id": 3,
-      "question": "What are the main sources of stress in your life right now?"
+      "question": "How do you feel if you are unable to complete a routine or ritual?"
     },
     {
       "id": 4,
-      "question": "How does stress affect your physical health and well-being?"
+      "question": "Describe how these thoughts or behaviors affect your daily functioning."
     },
     {
       "id": 5,
-      "question": "Describe how stress impacts your work or daily responsibilities."
-    },
-    {
-      "id": 6,
-      "question": "What coping mechanisms do you use when feeling stressed?"
-    },
-    {
-      "id": 7,
-      "question": "How does stress affect your relationships with others?"
-    },
-    {
-      "id": 8,
-      "question": "What changes would help reduce your stress levels?"
+      "question": "How much control do you feel you have over these thoughts or actions?"
     }
   ],
   "ptsd": [
     {
       "id": 1,
-      "question": "Can you describe the traumatic event you experienced? (Only share what you're comfortable with)"
+      "question": "Describe how you usually manage tasks that require planning and multiple steps. What challenges do you face?"
     },
     {
       "id": 2,
-      "question": "How do you feel when you're reminded of the traumatic event?"
+      "question": "When you have deadlines, how do you typically start and complete your work?"
     },
     {
       "id": 3,
-      "question": "Describe how the trauma has affected your daily life and functioning."
+      "question": "Explain how distractions (noise, people, notifications) affect your daily activities."
     },
     {
       "id": 4,
-      "question": "What triggers cause you to relive the traumatic experience?"
+      "question": "Describe situations where you feel physically restless or mentally overactive."
     },
     {
       "id": 5,
-      "question": "How has the trauma affected your relationships with others?"
-    },
-    {
-      "id": 6,
-      "question": "Describe your sleep patterns and any nightmares or flashbacks you experience."
-    },
-    {
-      "id": 7,
-      "question": "How do you cope with the emotional impact of the trauma?"
-    },
-    {
-      "id": 8,
-      "question": "What support systems or resources have been helpful in your recovery?"
+      "question": "How do attention or organization difficulties impact your studies, work, or relationships?"
     }
   ]
 }

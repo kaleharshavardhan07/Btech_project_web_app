@@ -186,91 +186,91 @@
   "stress" : [
     {
       "id": 1,
-      "question": "How often do you feel overwhelmed?",
+      "question": "How much of your time occupied by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 2,
-      "question": "Do you have trouble relaxing?",
+      "question": "How much interference is caused by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 3,
-      "question": "How often do you feel irritable or angry?",
+      "question": "How much distress is caused by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 4,
-      "question": "Do you experience headaches or muscle pain?",
+      "question": "How much effort do you make to resist obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 5,
-      "question": "How often do you feel tired or exhausted?",
+      "question": "How much control do you have over your obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 6,
-      "question": "Do you have trouble sleeping?",
+      "question": "How much time do you spent performing compulsive behaviors?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 7,
-      "question": "How often do you worry about work or responsibilities?",
+      "question": "How much interference is caused by compulsive behaviour?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 8,
-      "question": "Do you feel like you have too much to do?",
+      "question": "How much distress is caused if compulsions are prevented?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 9,
-      "question": "How often do you feel anxious?",
+      "question": "How much effort do you make to resist compulsions?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 10,
-      "question": "Do you have difficulty making decisions?",
+      "question": "How much control do you have over your compulsive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 11,
-      "question": "How often do you feel restless?",
+      "question": "How often do you engage in excessive checking behaviors?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 12,
-      "question": "Do you experience changes in appetite?",
+      "question": "How often do you feel the need to wash, clean, or sanitize repeatedly beyond what feels necessary?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 13,
-      "question": "How often do you feel like you're losing control?",
+      "question": "How strong is your need for things to be arranged in a specific order, symmetry, or exactness?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 14,
-      "question": "Do you have trouble concentrating?",
+      "question": "How often do you find yourself repeating actions or mental rituals?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 15,
-      "question": "How much does stress affect your daily activities?",
+      "question": "How often do you fear that something bad might happen if you do not perform certain actions or rituals?",
       "options": ["Not at all", "A little", "Moderately", "Severely"],
       "scores": [0, 1, 2, 3]
     }
