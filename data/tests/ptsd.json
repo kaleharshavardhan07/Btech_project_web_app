@@ -4,91 +4,91 @@
   "mcq": [
     {
       "id": 1,
-      "question": "Have you experienced a traumatic event?",
-      "options": ["No", "Yes, but not bothered", "Yes, somewhat bothered", "Yes, very bothered"],
+      "question": "How often do you have trouble wrapping up final details of a project once the challenging parts are done?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 2,
-      "question": "Do you have recurring memories of the traumatic event?",
+      "question": "Difficulty getting things in order when a task requires organization?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 3,
-      "question": "Do you have nightmares about the event?",
+      "question": "Do you have problems remembering appointments or obligations?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 4,
-      "question": "Do you avoid reminders of the traumatic event?",
+      "question": "Do you avoid or delay getting started on tasks that require a lot of thought?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 5,
-      "question": "Do you feel emotionally numb?",
+      "question": "Do you make careless mistakes on boring or difficult tasks?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 6,
-      "question": "Do you feel detached from others?",
+      "question": "Do you have difficulty keeping attention on boring or repetitive work?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 7,
-      "question": "Do you experience flashbacks?",
+      "question": "Difficulty concentrating on what people say, even when spoken to directly?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 8,
-      "question": "Are you easily startled?",
+      "question": "Do you have difficulty finding things at home or work?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 9,
-      "question": "Do you have trouble sleeping?",
+      "question": "Do you easily get distracted by activity or noise around you?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 10,
-      "question": "Do you feel irritable or have angry outbursts?",
+      "question": "Do you leave your seat in situations where you are expected to remain seated?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 11,
-      "question": "Do you have difficulty concentrating?",
+      "question": "Do you feel restless or fidgety?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 12,
-      "question": "Do you feel hypervigilant?",
+      "question": "Do you feel difficulty in unwinding and relaxing during free time?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 13,
-      "question": "Do you have negative thoughts about yourself or the world?",
+      "question": "Do you feel like talking too much in social situations?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 14,
-      "question": "Do you feel guilt or shame about the event?",
+      "question": "Do you finish other people's sentences before they finish speaking?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 15,
-      "question": "How much does this affect your daily life?",
+      "question": "Do you interrupt others when they are busy or talking?",
       "options": ["Not at all", "A little", "Moderately", "Severely"],
       "scores": [0, 1, 2, 3]
     }
@@ -96,35 +96,23 @@
   "subjective": [
     {
       "id": 1,
-      "question": "Can you describe the traumatic event you experienced? (Only share what you're comfortable with)"
+      "question": "Describe how you usually manage tasks that require planning and multiple steps. What challenges do you face?"
     },
     {
       "id": 2,
-      "question": "How do you feel when you're reminded of the traumatic event?"
+      "question": "When you have deadlines, how do you typically start and complete your work?"
     },
     {
       "id": 3,
-      "question": "Describe how the trauma has affected your daily life and functioning."
+      "question": "Explain how distractions (noise, people, notifications) affect your daily activities."
     },
     {
       "id": 4,
-      "question": "What triggers cause you to relive the traumatic experience?"
+      "question": "Describe situations where you feel physically restless or mentally overactive."
     },
     {
       "id": 5,
-      "question": "How has the trauma affected your relationships with others?"
-    },
-    {
-      "id": 6,
-      "question": "Describe your sleep patterns and any nightmares or flashbacks you experience."
-    },
-    {
-      "id": 7,
-      "question": "How do you cope with the emotional impact of the trauma?"
-    },
-    {
-      "id": 8,
-      "question": "What support systems or resources have been helpful in your recovery?"
+      "question": "How do attention or organization difficulties impact your studies, work, or relationships?"
     }
   ]
 }

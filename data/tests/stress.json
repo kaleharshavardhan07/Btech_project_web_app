@@ -4,91 +4,91 @@
   "mcq": [
     {
       "id": 1,
-      "question": "How often do you feel overwhelmed?",
+      "question": "How much of your time occupied by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 2,
-      "question": "Do you have trouble relaxing?",
+      "question": "How much interference is caused by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 3,
-      "question": "How often do you feel irritable or angry?",
+      "question": "How much distress is caused by obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 4,
-      "question": "Do you experience headaches or muscle pain?",
+      "question": "How much effort do you make to resist obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 5,
-      "question": "How often do you feel tired or exhausted?",
+      "question": "How much control do you have over your obsessive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 6,
-      "question": "Do you have trouble sleeping?",
+      "question": "How much time do you spent performing compulsive behaviors?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 7,
-      "question": "How often do you worry about work or responsibilities?",
+      "question": "How much interference is caused by compulsive behaviour?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 8,
-      "question": "Do you feel like you have too much to do?",
+      "question": "How much distress is caused if compulsions are prevented?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 9,
-      "question": "How often do you feel anxious?",
+      "question": "How much effort do you make to resist compulsions?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 10,
-      "question": "Do you have difficulty making decisions?",
+      "question": "How much control do you have over your compulsive thoughts?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 11,
-      "question": "How often do you feel restless?",
+      "question": "How often do you engage in excessive checking behaviors?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 12,
-      "question": "Do you experience changes in appetite?",
+      "question": "How often do you feel the need to wash, clean, or sanitize repeatedly beyond what feels necessary?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 13,
-      "question": "How often do you feel like you're losing control?",
+      "question": "How strong is your need for things to be arranged in a specific order, symmetry, or exactness?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 14,
-      "question": "Do you have trouble concentrating?",
+      "question": "How often do you find yourself repeating actions or mental rituals?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 15,
-      "question": "How much does stress affect your daily activities?",
+      "question": "How often do you fear that something bad might happen if you do not perform certain actions or rituals?",
       "options": ["Not at all", "A little", "Moderately", "Severely"],
       "scores": [0, 1, 2, 3]
     }
@@ -96,35 +96,23 @@
   "subjective": [
     {
       "id": 1,
-      "question": "Describe a recent situation that made you feel stressed or overwhelmed."
+      "question": "Describe thoughts that repeatedly enter your mind even when you try to ignore them."
     },
     {
       "id": 2,
-      "question": "How do you typically respond to stressful situations?"
+      "question": "Explain any repetitive behaviors you perform to reduce discomfort or anxiety."
     },
     {
       "id": 3,
-      "question": "What are the main sources of stress in your life right now?"
+      "question": "How do you feel if you are unable to complete a routine or ritual?"
     },
     {
       "id": 4,
-      "question": "How does stress affect your physical health and well-being?"
+      "question": "Describe how these thoughts or behaviors affect your daily functioning."
     },
     {
       "id": 5,
-      "question": "Describe how stress impacts your work or daily responsibilities."
-    },
-    {
-      "id": 6,
-      "question": "What coping mechanisms do you use when feeling stressed?"
-    },
-    {
-      "id": 7,
-      "question": "How does stress affect your relationships with others?"
-    },
-    {
-      "id": 8,
-      "question": "What changes would help reduce your stress levels?"
+      "question": "How much control do you feel you have over these thoughts or actions?"
     }
   ]
 }

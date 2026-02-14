@@ -4,49 +4,49 @@
   "mcq": [
     {
       "id": 1,
-      "question": "How often do you feel sad or down?",
+      "question": "Problems interfering with work, home, or social life?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 2,
-      "question": "Do you have trouble sleeping?",
+      "question": "Do you have trouble falling or staying asleep, or sleeping too much?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 3,
-      "question": "How is your appetite?",
+      "question": "How is your appetite? Poor or overeating?",
       "options": ["Normal", "Slightly reduced", "Significantly reduced", "No appetite"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 4,
-      "question": "Do you feel tired or lack energy?",
+      "question": "Do you feel tired or having little energy?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 5,
-      "question": "How often do you feel hopeless?",
+      "question": "How often do you feel down, depressed, or hopeless?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 6,
-      "question": "Do you have difficulty concentrating?",
+      "question": "Do you have difficulty concentrating on tasks (reading, watching TV, studying)?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 7,
-      "question": "How often do you lose interest in activities you used to enjoy?",
+      "question": "How often do you lose interest or pleasure in doing things you used to enjoy?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 8,
-      "question": "Do you feel worthless or guilty?",
+      "question": "Do you feel bad about yourself or feeling like a failure?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
@@ -76,8 +76,8 @@
     },
     {
       "id": 13,
-      "question": "How would you rate your overall mood?",
-      "options": ["Very good", "Good", "Fair", "Poor"],
+      "question": "How often do you have thoughts of being better off dead?",
+      "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
@@ -88,7 +88,7 @@
     },
     {
       "id": 15,
-      "question": "How often do you feel like crying?",
+      "question": "How often do you feel like you are moving or speaking unusually slowly?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     }
@@ -100,31 +100,19 @@
     },
     {
       "id": 2,
-      "question": "What activities or hobbies used to bring you joy, and how has that changed?"
+      "question": "How has your energy level affected your daily routine?"
     },
     {
       "id": 3,
-      "question": "How would you describe your sleep patterns and quality of sleep?"
+      "question": "Describe any changes you have noticed in your sleep or eating patterns."
     },
     {
       "id": 4,
-      "question": "Tell us about your relationships with family and friends. How have they been affected?"
+      "question": "How have these feelings affected your relationships or responsibilities?"
     },
     {
       "id": 5,
       "question": "Describe how your energy levels and motivation have changed recently."
-    },
-    {
-      "id": 6,
-      "question": "What thoughts or feelings do you experience when you wake up in the morning?"
-    },
-    {
-      "id": 7,
-      "question": "How do you cope with difficult emotions or situations?"
-    },
-    {
-      "id": 8,
-      "question": "What would you like to change about your current mental state?"
     }
   ]
 }

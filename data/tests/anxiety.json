@@ -4,43 +4,43 @@
   "mcq": [
     {
       "id": 1,
-      "question": "How often do you feel nervous or anxious?",
+      "question": "How often do you feel nervous, anxious, or on edge?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 2,
-      "question": "Do you experience panic attacks?",
+      "question": "Do you experience panic attacks(not being able to stop or control worrying)?",
       "options": ["Never", "Rarely", "Sometimes", "Often"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 3,
-      "question": "How often do you worry excessively?",
+      "question": "How often do you worry too much about different things?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 4,
-      "question": "Do you have trouble controlling your worries?",
+      "question": "Do you have trouble in relaxing?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 5,
-      "question": "How often do you feel restless?",
+      "question": "How often do you feel restless like it is hard to sit still?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 6,
-      "question": "Do you experience physical symptoms like rapid heartbeat?",
+      "question": "Do you experience physical symptoms like headaches, stomach issues, or muscle tension due to anxiety?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 7,
-      "question": "How often do you avoid situations that make you anxious?",
+      "question": "How often do you overthink?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
@@ -52,25 +52,25 @@
     },
     {
       "id": 9,
-      "question": "How often do you feel tense or on edge?",
+      "question": "How often do you feel tense?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 10,
-      "question": "Do you experience muscle tension?",
+      "question": "Constantly anticipating negative outcomes?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 11,
-      "question": "How often do you feel irritable?",
+      "question": "How often do you feel irritable or annoyed very easily?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
     {
       "id": 12,
-      "question": "Do you have difficulty concentrating due to anxiety?",
+      "question": "Do you have difficulty concentrating due to anxiety/worrying?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
@@ -82,7 +82,7 @@
     },
     {
       "id": 14,
-      "question": "Do you experience shortness of breath or dizziness?",
+      "question": "Do you feel overwhelmed by everyday responsibilities?",
       "options": ["Never", "Sometimes", "Often", "Always"],
       "scores": [0, 1, 2, 3]
     },
@@ -96,11 +96,11 @@
   "subjective": [
     {
       "id": 1,
-      "question": "Describe a situation that triggers your anxiety. What happens physically and emotionally?"
+      "question": "Describe the types of things you worry about most in your daily life."
     },
     {
       "id": 2,
-      "question": "How do you typically respond when you feel anxious or worried?"
+      "question": "How does worry affect your ability to relax or enjoy free time?"
     },
     {
       "id": 3,
@@ -108,23 +108,11 @@
     },
     {
       "id": 4,
-      "question": "Describe how anxiety affects your ability to focus or complete tasks."
+      "question": "Describe how anxiety affects your decision-making or confidence."
     },
     {
       "id": 5,
-      "question": "Tell us about your sleep patterns and how anxiety might be affecting them."
-    },
-    {
-      "id": 6,
-      "question": "How does anxiety impact your relationships with others?"
-    },
-    {
-      "id": 7,
-      "question": "What physical symptoms do you experience when anxious?"
-    },
-    {
-      "id": 8,
-      "question": "What strategies have you tried to manage your anxiety, and how effective were they?"
+      "question": "Describe how long your anxious thoughts usually last and how you cope with them."
     }
   ]
 }
