@@ -4,7 +4,7 @@
   "description": "Mental Health Assessment Platform with MCQ and Video Tests",
   "main": "server.js",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "scripts": {
     "start": "node server.js",
