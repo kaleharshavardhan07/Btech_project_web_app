@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const path = require('path');
 const connectDB = require('../config/database');
 const viewHelpers = require('../middleware/viewHelpers');
@@ -15,12 +16,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Session configuration (must be before viewHelpers)
+// Session configuration with MongoDB store (required for serverless)
 app.use(session({
   name: 'mentalHealthSession',
   secret: process.env.SESSION_SECRET || 'mental-health-secret-key-change-in-production',
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    ttl: 24 * 60 * 60 // 24 hours
+  }),
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
