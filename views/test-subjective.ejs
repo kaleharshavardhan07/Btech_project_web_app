@@ -385,61 +385,32 @@
     });
 
     async function uploadVideo(blob) {
-        const formData = new FormData();
-        formData.append('video', blob, `question_${currentQuestion + 1}.webm`);
-        formData.append('testId', testId);
-        formData.append('questionId', questions[currentQuestion].id);
-        formData.append('recordingDuration', 180 - recordingTimeLeft);
-        
+        // Download video to user's device
+        const filename = `${testId}_question_${currentQuestion + 1}.webm`;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        // Mark as recorded and update UI
+        hasRecorded[currentQuestion] = true;
         document.getElementById('uploadProgress').style.display = 'block';
-        document.getElementById('uploadProgressBar').style.width = '0%';
+        document.getElementById('uploadProgress').innerHTML = 
+            '<div class="alert alert-success mb-0"><i class="bi bi-check-circle me-2"></i>Video downloaded successfully!</div>';
+        document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+        document.getElementById('nextQuestionBtn').disabled = false;
         
-        const xhr = new XMLHttpRequest();
+        // Hide recording section after successful download
+        document.getElementById('recordingSection').style.display = 'none';
         
-        xhr.upload.addEventListener('progress', (e) => {
-            if (e.lengthComputable) {
-                const percentComplete = (e.loaded / e.total) * 100;
-                document.getElementById('uploadProgressBar').style.width = percentComplete + '%';
-            }
-        });
-        
-        xhr.addEventListener('load', () => {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                if (response.success) {
-                    hasRecorded[currentQuestion] = true;
-                    document.getElementById('uploadProgress').innerHTML = 
-                        '<div class="alert alert-success mb-0"><i class="bi bi-check-circle me-2"></i>Video uploaded successfully!</div>';
-                    document.getElementById('nextQuestionBtn').style.display = 'inline-block';
-                    document.getElementById('nextQuestionBtn').disabled = false;
-                    
-                    // Hide recording section after successful upload
-                    document.getElementById('recordingSection').style.display = 'none';
-                    
-                    if (currentQuestion === questionCount - 1) {
-                        document.getElementById('completeTestBtn').style.display = 'inline-block';
-                        document.getElementById('nextQuestionBtn').style.display = 'none';
-                    }
-                } else {
-                    alert('Error uploading video. Please try again.');
-                    document.getElementById('stopRecordingBtn').disabled = false;
-                    document.getElementById('extendTimeBtn').disabled = false;
-                }
-            } else {
-                alert('Error uploading video. Please try again.');
-                document.getElementById('stopRecordingBtn').disabled = false;
-                document.getElementById('extendTimeBtn').disabled = false;
-            }
-        });
-        
-        xhr.addEventListener('error', () => {
-            alert('Error uploading video. Please check your connection and try again.');
-            document.getElementById('stopRecordingBtn').disabled = false;
-            document.getElementById('extendTimeBtn').disabled = false;
-        });
-        
-        xhr.open('POST', '/test/upload-video');
-        xhr.send(formData);
+        if (currentQuestion === questionCount - 1) {
+            document.getElementById('completeTestBtn').style.display = 'inline-block';
+            document.getElementById('nextQuestionBtn').style.display = 'none';
+        }
     }
 
     document.getElementById('nextQuestionBtn').addEventListener('click', () => {

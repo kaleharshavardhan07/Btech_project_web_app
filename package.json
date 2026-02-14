@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Mental Health Assessment Platform with MCQ and Video Tests",
   "main": "server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "vercel-build": "echo Build complete"
   },
   "keywords": ["mental-health", "assessment", "nodejs", "express"],
   "author": "",
