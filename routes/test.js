@@ -57,7 +57,7 @@ router.get('/select', (req, res) => {
   const testTypes = [
     { id: 'depression', name: 'Depression', icon: '😔' },
     { id: 'anxiety', name: 'Anxiety', icon: '😰' },
-    { id: 'stress', name: 'Stress', icon: '😓' },
+    { id: 'stress', name: 'OCD', icon: '😓' },
     { id: 'ptsd', name: 'PTSD', icon: '😢' }
   ];
   res.render('test-select', { testTypes });
@@ -83,6 +83,39 @@ router.get('/mcq/:testType', requireAuth, (req, res) => {
     questionCount: questions.length,
     isRealPatientData
   });
+});
+
+// Skip MCQ and go directly to subjective test
+router.post('/skip-mcq', requireAuth, async (req, res) => {
+  try {
+    const { testType, isRealPatientData } = req.body;
+    const userId = req.session.userId;
+
+    if (!testType) {
+      return res.status(400).json({ error: 'Missing test type' });
+    }
+
+    const testData = testDataMap[testType];
+    if (!testData) {
+      return res.status(400).json({ error: 'Invalid test type' });
+    }
+
+    // Create test with skipped MCQ
+    const test = new Test({
+      userId,
+      testType,
+      mcqAnswers: [],
+      mcqCompleted: false,
+      mcqSkipped: true,
+      isRealPatientData: isRealPatientData === true || isRealPatientData === 'true'
+    });
+    await test.save();
+
+    res.json({ success: true, testId: test._id.toString() });
+  } catch (error) {
+    console.error('Skip MCQ error:', error);
+    res.status(500).json({ error: 'Failed to skip MCQ' });
+  }
 });
 
 // Submit MCQ answers

@@ -25,6 +25,10 @@ const testSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  mcqSkipped: {
+    type: Boolean,
+    default: false
+  },
   subjectiveCompleted: {
     type: Boolean,
     default: false

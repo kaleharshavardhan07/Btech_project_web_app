@@ -28,12 +28,17 @@
                             <button type="button" class="btn btn-outline-secondary" id="prevBtn" style="display: none;">
                                 <i class="bi bi-arrow-left me-2"></i>Previous
                             </button>
-                            <button type="button" class="btn btn-primary ms-auto" id="nextBtn">
-                                Next<i class="bi bi-arrow-right ms-2"></i>
-                            </button>
-                            <button type="submit" class="btn btn-success ms-auto" id="submitBtn" style="display: none;">
-                                <i class="bi bi-check-circle me-2"></i>Submit Test
-                            </button>
+                            <div class="ms-auto d-flex gap-2">
+                                <button type="button" class="btn btn-outline-warning" id="skipBtn">
+                                    <i class="bi bi-skip-forward me-2"></i>Skip to Video Test
+                                </button>
+                                <button type="button" class="btn btn-primary" id="nextBtn">
+                                    Next<i class="bi bi-arrow-right ms-2"></i>
+                                </button>
+                                <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                                    <i class="bi bi-check-circle me-2"></i>Submit Test
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -100,6 +105,42 @@
     document.getElementById('prevBtn').addEventListener('click', () => {
         currentQuestion--;
         renderQuestion();
+    });
+
+    document.getElementById('skipBtn').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to skip the MCQ section and proceed directly to the video test?')) {
+            const skipBtn = document.getElementById('skipBtn');
+            skipBtn.disabled = true;
+            skipBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Skipping...';
+
+            try {
+                const response = await fetch('/test/skip-mcq', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        testType: '<%= testType %>',
+                        isRealPatientData: isRealPatientFlag
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    window.location.href = `/test/subjective/${data.testId}`;
+                } else {
+                    alert('Error skipping MCQ. Please try again.');
+                    skipBtn.disabled = false;
+                    skipBtn.innerHTML = '<i class="bi bi-skip-forward me-2"></i>Skip to Video Test';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error skipping MCQ. Please try again.');
+                skipBtn.disabled = false;
+                skipBtn.innerHTML = '<i class="bi bi-skip-forward me-2"></i>Skip to Video Test';
+            }
+        }
     });
 
     document.getElementById('mcqForm').addEventListener('submit', async (e) => {
