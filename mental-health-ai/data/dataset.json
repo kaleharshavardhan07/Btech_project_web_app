@@ -1,0 +1,8 @@
+[
+  {
+    "mcq_answers": [0, 1, 2, 1, 0],
+    "subjective_text": "I have been feeling low lately and struggling to sleep.",
+    "video_path": "uploads/videos/sample.mp4",
+    "label": "depression"
+  }
+]
