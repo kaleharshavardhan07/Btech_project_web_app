@@ -4,3 +4,6 @@ uploads/
 *.log
 .DS_Store
 *.mp4
+*.MOV
+
+mental-health-ai/data/videos
